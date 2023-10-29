@@ -1,0 +1,93 @@
+{
+  "$schema": "./spec.json",
+  "draftName": "november",
+  "tasks": [
+    {
+      "taskName": "ΑΥΔΜ"
+    },
+    {
+      "taskName": "ΕΕΑΣ",
+      "interops": [
+        "ΑΥΔΜ"
+      ]
+    }
+  ],
+  "plan": {
+    "startDate": "2023-11-01",
+    "endDate": "2023-11-30",
+    "tasksConfig": [
+      {
+        "taskName": "ΕΕΑΣ",
+        "defaultCount": 1
+      }
+    ],
+    "datesConfig": [
+      {
+        "datesList": [
+          "2023-11-01",
+          "2023-11-12",
+          "2023-11-21"
+        ],
+        "tasksConfig": [
+          {
+            "taskName": "ΕΕΑΣ",
+            "countExact": 1,
+            "isOptional": true,
+            "optionalMin": 1
+          }
+        ]
+      }
+    ]
+  },
+  "people": [
+    {
+      "firstName": "John",
+      "lastName": "L",
+      "rank": {
+        "rankName": "Lieut",
+        "rankNumber": 3
+      },
+      "possibleTasks": [
+        "ΕΕΑΣ"
+      ],
+      "totalLimit": 3,
+      "history": {
+        "months": 8,
+        "total": 28,
+        "normal": 22,
+        "holiday": 6
+      },
+      "parameters": {
+        "excludedDates": [
+          "2023-10-28"
+        ],
+        "preferredPeople": [
+          {
+            "firstName": "Mar",
+            "lastName": "L",
+            "likeFactor": 10
+          }
+        ],
+        "minimumGap": 4
+      }
+    }
+  ],
+  "options": {
+    "forbiddenCombinations": [
+      [
+        {
+          "firstName": "JOHN",
+          "lastName": "L"
+        },
+        {
+          "firstName": "Maria",
+          "lastName": "L"
+        },
+        {
+          "firstName": "asdf",
+          "lastName": "sdf"
+        }
+      ]
+    ]
+  }
+}

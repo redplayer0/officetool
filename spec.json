@@ -1,0 +1,453 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Assignements Draft Spec",
+  "type": "object",
+  "required": [
+    "draftName",
+    "tasks",
+    "plan"
+  ],
+  "properties": {
+    "draftName": {
+      "type": "string",
+      "default": "draft"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "taskName"
+        ],
+        "properties": {
+          "taskName": {
+            "type": "string"
+          },
+          "interops": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "ranks": {
+            "type": "object",
+            "required": [
+              "minimumRank",
+              "maximumRank"
+            ],
+            "properties": {
+              "minimumRank": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 10
+              },
+              "maximumRank": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 10
+              }
+            }
+          }
+        }
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "plan": {
+      "type": "object",
+      "required": [
+        "startDate",
+        "endDate",
+        "tasksConfig"
+      ],
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "normal": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "holiday": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "prepreholiday": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "preholiday": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "prethreeday": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "special": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "threeday": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "tasksConfig": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "taskName",
+              "defaultCount"
+            ],
+            "maxProperties": 3,
+            "properties": {
+              "taskName": {
+                "type": "string"
+              },
+              "defaultCount": {
+                "type": "number",
+                "minimum": 0,
+                "default": 1
+              },
+              "specificDates": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "uniqueItems": true
+              },
+              "excludedDates": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "uniqueItems": true
+              }
+            }
+          }
+        },
+        "datesConfig": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "tasksConfig"
+            ],
+            "properties": {
+              "startDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "endDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "datesList": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date"
+                }
+              },
+              "tasksConfig": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "taskName"
+                  ],
+                  "properties": {
+                    "taskName": {
+                      "type": "string"
+                    },
+                    "countExact": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "countMin": {
+                      "type": "number",
+                      "minimum": 1
+                    },
+                    "countMax": {
+                      "type": "number",
+                      "minimum": 1
+                    },
+                    "isOptional": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "optionalMin": {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    "optionalMax": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  },
+                  "dependencies": {
+                    "optionalMin": [
+                      "isOptional"
+                    ],
+                    "optionalMax": [
+                      "isOptional",
+                      "optionalMin"
+                    ],
+                    "isOptional": [
+                      "optionalMin"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "people": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "firstName",
+          "lastName",
+          "rank",
+          "possibleTasks",
+          "totalLimit",
+          "history"
+        ],
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "fatherName": {
+            "type": "string"
+          },
+          "rank": {
+            "type": "object",
+            "required": [
+              "rankName",
+              "rankNumber"
+            ],
+            "properties": {
+              "rankName": {
+                "type": "string"
+              },
+              "rankNumber": {
+                "type": "number",
+                "minimum": 1
+              }
+            }
+          },
+          "possibleTasks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minItems": 1
+            }
+          },
+          "totalLimit": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 6
+          },
+          "history": {
+            "type": "object",
+            "properties": {
+              "months": {
+                "type": "number",
+                "minimum": 0,
+                "default": 0
+              },
+              "total": {
+                "type": "number",
+                "minimum": 0,
+                "default": 0
+              },
+              "normal": {
+                "type": "number",
+                "minimum": 0,
+                "default": 0
+              },
+              "holiday": {
+                "type": "number",
+                "minimum": 0,
+                "default": 0
+              },
+              "preholiday": {
+                "type": "number",
+                "minimum": 0,
+                "default": 0
+              },
+              "prepreholiday": {
+                "type": "number",
+                "minimum": 0,
+                "default": 0
+              },
+              "prethreeday": {
+                "type": "number",
+                "minimum": 0,
+                "default": 0
+              },
+              "special": {
+                "type": "number",
+                "minimum": 0,
+                "default": 0
+              },
+              "threeday": {
+                "type": "number",
+                "minimum": 0,
+                "default": 0
+              }
+            }
+          },
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "demandedDates": {
+                "$comment": "TODO validate no overlap between all dates",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "uniqueItems": true
+              },
+              "preferredDates": {
+                "$comment": "TODO validate no overlap between all dates",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "uniqueItems": true
+              },
+              "excludedDates": {
+                "$comment": "TODO validate no overlap between all dates",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "uniqueItems": true
+              },
+              "preferredPeople": {
+                "$comment": "TODO validate that preferredPeople exist",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "firstName",
+                    "lastName",
+                    "likeFactor"
+                  ],
+                  "properties": {
+                    "firstName": {
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "type": "string"
+                    },
+                    "fatherName": {
+                      "type": "string"
+                    },
+                    "likeFactor": {
+                      "type": "number",
+                      "minimum": 1,
+                      "maximum": 10
+                    }
+                  }
+                }
+              },
+              "avoidedPeople": {
+                "$comment": "TODO validate that avoidedPeople exist",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "firstName",
+                    "lastName"
+                  ],
+                  "properties": {
+                    "firstName": {
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "type": "string"
+                    },
+                    "fatherName": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "minimumGap": {
+                "type": "number",
+                "minimum": 1,
+                "maximum": 7
+              }
+            }
+          }
+        }
+      }
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "forbiddenCombinations": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "fatherName": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
