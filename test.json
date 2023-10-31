@@ -28,14 +28,10 @@
           "2023-11-12",
           "2023-11-21"
         ],
-        "tasksConfig": [
-          {
-            "taskName": "ΕΕΑΣ",
-            "countExact": 1,
-            "isOptional": true,
-            "optionalMin": 1
-          }
-        ]
+        "taskName": "ΕΕΑΣ",
+        "countExact": 1,
+        "isOptional": true,
+        "optionalMin": 1
       }
     ]
   },
@@ -50,7 +46,7 @@
       "possibleTasks": [
         "ΕΕΑΣ"
       ],
-      "totalLimit": 3,
+      "maxTasks": 3,
       "history": {
         "months": 8,
         "total": 28,
@@ -59,9 +55,12 @@
       },
       "parameters": {
         "excludedDates": [
-          "2023-10-28"
+          {
+            "date": "2023-10-28",
+            "level": 2
+          }
         ],
-        "preferredPeople": [
+        "peopleRelations": [
           {
             "firstName": "Mar",
             "lastName": "L",
