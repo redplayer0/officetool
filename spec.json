@@ -57,6 +57,13 @@
       "required": [
         "startDate",
         "endDate",
+        "datesList",
+        "holiday",
+        "preholiday",
+        "prepreholiday",
+        "prethreeday",
+        "special",
+        "threeday",
         "tasksConfig"
       ],
       "properties": {
@@ -67,6 +74,35 @@
         "endDate": {
           "type": "string",
           "format": "date"
+        },
+        "datesList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "date",
+              "types"
+            ],
+            "properties": {
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "types": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "holiday",
+                    "preholiday",
+                    "prepreholiday",
+                    "prethreeday",
+                    "special",
+                    "threeday"
+                  ]
+                }
+              }
+            }
+          }
         },
         "tasksConfig": {
           "type": "array",
@@ -288,24 +324,33 @@
           "parameters": {
             "type": "object",
             "properties": {
-              "demandedDates": {
-                "$comment": "TODO validate no overlap between all dates",
+              "preferences": {
                 "type": "array",
                 "items": {
                   "type": "object",
                   "required": [
                     "date",
-                    "level"
+                    "option"
                   ],
                   "properties": {
                     "date": {
                       "type": "string",
                       "format": "date"
                     },
-                    "level": {
-                      "type": "number",
-                      "minimum": 1,
-                      "maximum": 10
+                    "toDate": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "option": {
+                      "enum": [
+                        "duty",
+                        "travel",
+                        "vacation",
+                        "demand",
+                        "prefer",
+                        "trynot",
+                        "not"
+                      ]
                     }
                   }
                 }
