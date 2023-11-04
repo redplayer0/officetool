@@ -29,6 +29,19 @@ def dates_list(s1, s2):
     return dates
 
 
+def dates_dict(dates, dlist):
+    date_params = {}
+    for d in dates:
+        date_params[d] = {}
+    for item in dlist:
+        cost = 1
+        date = item["date"]
+        types = item["types"]
+        date_params[d]["types"] = types
+
+    return date_params
+
+
 def people_dict(people):
     p = {}
     for person in people:
@@ -47,12 +60,26 @@ def costs_dict(dates, people, plan):
             ...
 
 
-def get_person_costs(person, dates, plan):
-    history = person["history"]
-    months = person.get("months", 0)
+def get_person_costs(history, date_params):
+    months = history.get("months", 1)
     costs = {}
-    for day in plan:
-        ...
+    for date, params in date_params.items():
+        cost = 1
+        if "types" in params:
+            types = params["types"]
+            for t in types:
+                cost += history.get(t, 0) / months
+        else:
+            cost += history.get("normal", 0) / months
+        costs[date] = cost
+    return costs
+
+
+def get_all_people_costs(people, date_params):
+    return {
+        name: get_person_costs(values.get("history"), date_params)
+        for name, values in people.items()
+    }
 
 
 if __name__ == "__main__":
@@ -65,7 +92,9 @@ if __name__ == "__main__":
         dt = json.load(f)
 
     dates = dates_list(dt["plan"]["startDate"], dt["plan"]["endDate"])
+    date_params = dates_dict(dates, dt["plan"]["datesList"])
     people = people_dict(dt["people"])
+    print(people)
 
-    example_costs = get_person_costs(dt["people"][0], dates, dt["plan"])
+    example_costs = get_all_people_costs(people, date_params)
     pprint(example_costs)

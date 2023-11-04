@@ -58,12 +58,6 @@
         "startDate",
         "endDate",
         "datesList",
-        "holiday",
-        "preholiday",
-        "prepreholiday",
-        "prethreeday",
-        "special",
-        "threeday",
         "tasksConfig"
       ],
       "properties": {

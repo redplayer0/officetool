@@ -15,23 +15,13 @@
   "plan": {
     "startDate": "2023-11-01",
     "endDate": "2023-11-30",
-    "holiday": [
-      "2023-11-02"
-    ],
-    "preholiday": [
-      "2023-11-05"
-    ],
-    "prepreholiday": [
-      "2023-11-03"
-    ],
-    "prethreeday": [
-      "2023-11-07"
-    ],
-    "special": [
-      "2023-11-01"
-    ],
-    "threeday": [
-      "2023-11-10"
+    "datesList": [
+      {
+        "date": "2023-11-01",
+        "types": [
+          "holiday"
+        ]
+      }
     ],
     "tasksConfig": [
       {
