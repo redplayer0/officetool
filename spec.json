@@ -224,7 +224,7 @@
           "lastName": {
             "type": "string"
           },
-          "fatherName": {
+          "uuid": {
             "type": "string"
           },
           "rank": {
@@ -349,50 +349,6 @@
                   }
                 }
               },
-              "preferredDates": {
-                "$comment": "TODO validate no overlap between all dates",
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "required": [
-                    "date",
-                    "level"
-                  ],
-                  "properties": {
-                    "date": {
-                      "type": "string",
-                      "format": "date"
-                    },
-                    "level": {
-                      "type": "number",
-                      "minimum": 1,
-                      "maximum": 10
-                    }
-                  }
-                }
-              },
-              "excludedDates": {
-                "$comment": "TODO validate no overlap between all dates",
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "required": [
-                    "date",
-                    "level"
-                  ],
-                  "properties": {
-                    "date": {
-                      "type": "string",
-                      "format": "date"
-                    },
-                    "level": {
-                      "type": "number",
-                      "minimum": 1,
-                      "maximum": 10
-                    }
-                  }
-                }
-              },
               "peopleRelations": {
                 "$comment": "TODO validate that preferredPeople exist",
                 "type": "array",
@@ -434,27 +390,55 @@
     "options": {
       "type": "object",
       "properties": {
-        "forbiddenCombinations": {
-          "type": "array",
-          "items": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "type": "string"
-                },
-                "lastName": {
-                  "type": "string"
-                },
-                "fatherName": {
-                  "type": "string"
-                }
-              }
+        "peoplePreferences": {
+          "type": "object",
+          "properties": {
+            "duty": {
+              "type": "number"
+            },
+            "travel": {
+              "type": "number"
+            },
+            "vacation": {
+              "type": "number"
+            },
+            "demand": {
+              "type": "number"
+            },
+            "prefer": {
+              "type": "number"
+            },
+            "trynot": {
+              "type": "number"
+            },
+            "not": {
+              "type": "number"
+            }
+          },
+        ]
+      }
+    },
+    "forbiddenCombinations": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            },
+            "fatherName": {
+              "type": "string"
             }
           }
         }
       }
     }
   }
+}
+}
 }

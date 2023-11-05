@@ -45,14 +45,16 @@
   },
   "people": [
     {
-      "firstName": "John",
+      "uuid": "MARIA_LITHO",
+      "firstName": "Maria",
       "lastName": "L",
       "rank": {
         "rankName": "Lieut",
         "rankNumber": 3
       },
       "possibleTasks": [
-        "ΕΕΑΣ"
+        "ΕΕΑΣ",
+        "ΑΥΔΜ"
       ],
       "maxTasks": 3,
       "history": {
@@ -62,10 +64,40 @@
         "holiday": 6
       },
       "parameters": {
-        "excludedDates": [
+        "preferences": [
           {
-            "date": "2023-10-28",
-            "level": 2
+            "date": "2023-11-21",
+            "toDate": "2023-11-24",
+            "option": "duty"
+          }
+        ]
+      }
+    },
+    {
+      "uuid": "JOHN_LOL",
+      "firstName": "John",
+      "lastName": "L",
+      "rank": {
+        "rankName": "Lieut",
+        "rankNumber": 3
+      },
+      "possibleTasks": [
+        "ΕΕΑΣ",
+        "ΑΥΔΜ"
+      ],
+      "maxTasks": 3,
+      "history": {
+        "months": 8,
+        "total": 28,
+        "normal": 22,
+        "holiday": 6
+      },
+      "parameters": {
+        "preferences": [
+          {
+            "date": "2023-11-21",
+            "toDate": "2023-11-24",
+            "option": "duty"
           }
         ],
         "peopleRelations": [
@@ -80,6 +112,15 @@
     }
   ],
   "options": {
+    "peoplePreferences": {
+      "duty": 80,
+      "travel": 100,
+      "vacation": 50,
+      "demand": -2,
+      "prefer": -1,
+      "trynot": 2,
+      "not": 5
+    },
     "forbiddenCombinations": [
       [
         {
